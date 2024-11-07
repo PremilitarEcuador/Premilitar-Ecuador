@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <a href="http://localhost:8080/verificacion_institucion?codigo=M8pMnjyvgwklawU4ArJlAA==-1697&referer={{ document.location.href }}" target="_blank">
-        <button>Verificar Código</button>
+    <!-- Botón de verificación con enlace dinámico -->
+    <a id="verificarBoton" href="#" target="_blank">
+        <button
+            style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; font-size: 16px;">
+            Verificar Código
+        </button>
     </a>
 </body>
+
 </html>
+<script>
+    // Aquí se genera el enlace con el referer dinámico
+    const codigo = 'M8pMnjyvgwklawU4ArJlAA==-1697'; // Este es el código que deben usar
+    const referer = encodeURIComponent(window.location.href); // Obtén la URL actual del navegador
+    const enlace = `http://localhost:8080/verificacion_institucion?codigo=${codigo}&referer=${referer}`;
+
+    // Establece el enlace dinámicamente en el atributo href de tu botón
+    document.getElementById('verificarBoton').href = enlace;
+</script>
