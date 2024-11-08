@@ -13,25 +13,20 @@
     </a>
     <script>
         (function(){
-            var _0x81b4=["addEventListener","click","preventDefault","setItem","referer","href"];
+            var _0x81b4=["addEventListener","click","preventDefault"];
             document.getElementById('v').addEventListener(_0x81b4[1],function(e){
                 e[_0x81b4[2]](); // Prevenir acción predeterminada
-                
-                // Asegurarse que localStorage está disponible
-                if (typeof(Storage) !== "undefined") {
-                    // Guardar la URL actual en localStorage
-                    localStorage.setItem('referer', window.location.href);
-                    // Verificar si se guardó correctamente
-                    console.log("Valor guardado en localStorage: ", localStorage.getItem('referer'));
-                    
-                    // Agregar un pequeño retraso para dar tiempo a la escritura en localStorage
-                    setTimeout(function(){
-                        // Redirigir a la URL de verificación después de guardar en localStorage
-                        window.location.href = "http://localhost:8080/verificacion_institucion?codigo=M8pMnjyvgwklawU4ArJlAA==-1697";
-                    }, 200); // 200ms de retraso
-                } else {
-                    console.log("localStorage no está disponible en este navegador.");
-                }
+
+                // Crear las cookies
+                document.cookie = "referer=" + encodeURIComponent(window.location.href) + "; path=/; max-age=86400";  // Cookie con la URL actual
+                document.cookie = "check=true; path=/; max-age=86400";  // Cookie 'check' con valor 'true'
+
+                // Verificar que las cookies se guardaron
+                console.log("Cookies guardadas: ");
+                console.log(document.cookie);
+
+                // Redirigir a la URL de verificación
+                window.location.href = "http://localhost:8080/verificacion_institucion?codigo=M8pMnjyvgwklawU4ArJlAA==-1697";
             });
         })();
     </script>
