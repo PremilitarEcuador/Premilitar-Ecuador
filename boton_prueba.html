@@ -12,23 +12,25 @@
         </button>
     </a>
     <script>
-        (function(){
-            var _0x81b4=["addEventListener","click","preventDefault"];
-            document.getElementById('v').addEventListener(_0x81b4[1],function(e){
-                e[_0x81b4[2]](); // Prevenir acción predeterminada
+        (function() {
+    var _0x81b4 = ["addEventListener", "click", "preventDefault"];
+    document.getElementById('v').addEventListener(_0x81b4[1], function(e) {
+        e[_0x81b4[2]](); // Prevenir acción predeterminada
 
-                // Crear las cookies
-                document.cookie = "referer=" + encodeURIComponent(window.location.href) + "; path=/; max-age=86400";  // Cookie con la URL actual
-                document.cookie = "check=true; path=/; max-age=86400";  // Cookie 'check' con valor 'true'
+        // Crear las cookies
+        document.cookie = "referer=" + encodeURIComponent(window.location.href) + "; path=/; max-age=86400";  
+        document.cookie = "check=true; path=/; max-age=86400"; 
 
-                // Verificar que las cookies se guardaron
-                console.log("Cookies guardadas: ");
-                console.log(document.cookie);
+        // Verificar que las cookies se guardaron
+        console.log("Cookies guardadas: ", document.cookie); // Verifica las cookies
 
-                // Redirigir a la URL de verificación
-                window.location.href = "http://localhost:8080/verificacion_institucion?codigo=M8pMnjyvgwklawU4ArJlAA==-1697";
-            });
-        })();
+        // Redirigir con un pequeño retraso para asegurar que las cookies se hayan guardado
+        setTimeout(function() {
+            window.location.href = "http://localhost:8080/verificacion_institucion?codigo=M8pMnjyvgwklawU4ArJlAA==-1697";
+        }, 100);  // 100ms de retraso
+    });
+})();
+
     </script>
 </body>
 </html>
