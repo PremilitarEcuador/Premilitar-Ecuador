@@ -1,36 +1,29 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enlace de Verificación</title>
 </head>
+
 <body>
-    <a id="v" href="#" target="_blank">
-        <button style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; font-size: 16px;">
+    <!-- Botón de verificación con enlace dinámico -->
+    <a id="verificarBoton" href="#" target="_blank">
+        <button
+            style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; font-size: 16px;">
             Verificar Código
         </button>
     </a>
-    <script>
-        (function() {
-    var _0x81b4 = ["addEventListener", "click", "preventDefault"];
-    document.getElementById('v').addEventListener(_0x81b4[1], function(e) {
-        e[_0x81b4[2]](); // Prevenir acción predeterminada
-
-        // Crear las cookies
-        document.cookie = "referer=" + encodeURIComponent(window.location.href) + "; path=/; max-age=86400";  
-        document.cookie = "check=true; path=/; max-age=86400"; 
-
-        // Verificar que las cookies se guardaron
-        console.log("Cookies guardadas: ", document.cookie); // Verifica las cookies
-
-        // Redirigir con un pequeño retraso para asegurar que las cookies se hayan guardado
-        setTimeout(function() {
-            window.location.href = "http://localhost:8080/verificacion_institucion?codigo=M8pMnjyvgwklawU4ArJlAA==-1697";
-        }, 100);  // 100ms de retraso
-    });
-})();
-
-    </script>
 </body>
+
 </html>
+<script>
+    // Aquí se genera el enlace con el referer dinámico
+    const codigo = 'M8pMnjyvgwklawU4ArJlAA==-1697'; // Este es el código que deben usar
+    const referer = encodeURIComponent(window.location.href); // Obtén la URL actual del navegador
+    const enlace = `http://localhost:8080/verificacion_institucion?codigo=${codigo}&referer=${referer}`;
+
+    // Establece el enlace dinámicamente en el atributo href de tu botón
+    document.getElementById('verificarBoton').href = enlace;
+</script>
